@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.apache.shiro/shiro-all
+    compile group: 'org.apache.shiro', name: 'shiro-all', version: '1.5.3'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

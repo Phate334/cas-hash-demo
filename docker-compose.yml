@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  db:
+    build: ./db
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
+      - MYSQL_DATABASE=cas
+      - MYSQL_USER=cas
+      - MYSQL_PASSWORD=cas
+  cas:
+    build: ./cas
+    volumes:
+      - cas-m2:/root/.m2/
+      - ./cas/src/:/cas-overlay/src/
+    ports:
+      - 8443:8443
+
+volumes:
+  cas-m2:
